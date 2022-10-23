@@ -1,0 +1,22 @@
+{
+    "name": "mohamed/mvc-php",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/",
+            "MvcPhp\\": "src/"
+            
+        }
+    },
+    "authors": [
+        {
+            "name": "mohamed"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.5",
+        "symfony/var-dumper": "^6.1"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7"
+    }
+}
