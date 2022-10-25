@@ -13,11 +13,12 @@ class Request
     public function path()
     {
         $path = $_SERVER['REQUEST_URI']  ?? '/';
-        $filepath = explode('/' , rtrim(base_path(), '/'));
-        
-        $path = rtrim(str_replace(end($filepath).'/', '', $path), '/');
-
-        $path == '' ? $path = '/' : $path;
+        $filepath = str_replace('\\', '/' , base_path());
+        $filepath = explode('/' , rtrim($filepath , '/'));
+        $filepath = end($filepath);
+        $pattern = "/(.*)($filepath)/";
+        $path =  preg_replace($pattern, '', rtrim($path, '/'));
+        $path == '' ? $path = '/' : rtrim($path , '/');
         return str_contains($path, '?' ) ? explode('?', $path)[0] : $path;
     }
 
