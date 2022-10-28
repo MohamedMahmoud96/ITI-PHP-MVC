@@ -12,10 +12,8 @@
         <title><?php  echo env('APP_NAME');?></title>
     </head>
     <body>
-    <div class='container'>
+    <div>
     {{content}}
-
-   
 </div>
     </body>
     </html>

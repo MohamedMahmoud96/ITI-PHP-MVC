@@ -29,6 +29,10 @@ class Model{
        
         return \DB::delete(Model::$table,$colName,$id);
     }
+    public static function query($query)
+    {
+        return \DB::sql_query($query);
+    }
 
 
 }

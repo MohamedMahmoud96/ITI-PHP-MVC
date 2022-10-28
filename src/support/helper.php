@@ -1,8 +1,9 @@
 <?php
 
-use Dotenv\Parser\Value;
 use  MvcPhp\view\view;
 use MvcPhp\Application;
+use Dotenv\Parser\Value;
+use MvcPhp\validation\Validator;
 
 if(!function_exists('env'))
 {
@@ -56,5 +57,12 @@ if(!function_exists('app'))
     
         }
         return $instance ;
+    }
+}
+
+if (!function_exists('validator')) {
+    function validator()
+    {
+        return (new Validator());
     }
 }
