@@ -4,9 +4,7 @@ use  App\Controllers\admin\userController;
 use  App\Controllers\admin\productsController;
 use  App\Controllers\admin\orderController;
 
-
 use MvcPhp\Http\Route;
-
 
 Route::get('home', [HomeController::class, 'index']);  
 
