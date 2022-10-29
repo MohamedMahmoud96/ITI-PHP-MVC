@@ -9,7 +9,6 @@ class Model{
     public static function get(){
         return \DB::selectAll(Model::$table);
     }
-
     public static function find($col,$value){
 
         return \DB::selectone(Model::$table,$col,$value);

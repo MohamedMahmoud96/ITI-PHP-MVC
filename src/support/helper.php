@@ -60,10 +60,8 @@ if(!function_exists('app'))
         }
         return $instance ;
     }
-<<<<<<< HEAD
 }
-=======
-}
+
 
 if(!function_exists('asset'))
 {

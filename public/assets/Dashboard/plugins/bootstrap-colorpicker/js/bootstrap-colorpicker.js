@@ -1611,7 +1611,6 @@ module.exports = exports.default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-<<<<<<< HEAD
 
 
 module.exports = {
@@ -1764,7 +1763,6 @@ module.exports = {
 	"yellow": [255, 255, 0],
 	"yellowgreen": [154, 205, 50]
 };
-=======
 
 
 module.exports = {
@@ -1917,7 +1915,6 @@ module.exports = {
 	"yellow": [255, 255, 0],
 	"yellowgreen": [154, 205, 50]
 };
->>>>>>> 3045f3431911e431bf6f83e9168b841d38e77032
 
 
 /***/ }),

@@ -4,9 +4,6 @@ namespace App\Controllers\admin;
 use App\Models\admin\Products;
 class HomeController
 {
-
-
-
     public function index()
     {
        return view('home');

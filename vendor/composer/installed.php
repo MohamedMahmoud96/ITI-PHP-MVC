@@ -3,7 +3,7 @@
         'name' => 'mohamed/mvc-php',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'cbee04582bbda6711558e964e5a525f57b72b9d5',
+        'reference' => 'db2b9368d2d85d2974c2baecd792aa86dbabdf43',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -157,7 +157,7 @@
         'mohamed/mvc-php' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'cbee04582bbda6711558e964e5a525f57b72b9d5',
+            'reference' => 'db2b9368d2d85d2974c2baecd792aa86dbabdf43',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
