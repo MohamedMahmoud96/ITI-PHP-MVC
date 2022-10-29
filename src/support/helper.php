@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+use Dotenv\Parser\Value;
+use  MvcPhp\view\view;
+use MvcPhp\Application;
+=======
 use App\Models\Login;
 use App\Models\user;
 use Dotenv\Parser\Value;
@@ -8,6 +13,7 @@ use MvcPhp\Application;
 use MvcPhp\Cookies;
 use MvcPhp\Http\Request;
 use MvcPhp\Session;
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
 
 if(!function_exists('env'))
 {
@@ -25,6 +31,20 @@ if (!function_exists('value'))
     }
 }
 
+<<<<<<< HEAD
+if (!function_exists('asset'))
+{
+    function asset($url)
+    {
+        return "../../public/$url";
+    }
+}
+
+
+
+
+=======
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
 if (!function_exists('bash_path'))
 {
     function base_path()
@@ -62,6 +82,9 @@ if(!function_exists('app'))
         }
         return $instance ;
     }
+<<<<<<< HEAD
+}
+=======
 }
 
 if(!function_exists('asset'))
@@ -190,3 +213,4 @@ if(!function_exists('auth'))
 
 
    
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc

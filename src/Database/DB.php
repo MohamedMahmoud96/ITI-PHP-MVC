@@ -17,15 +17,25 @@ class DB{
       return DB::$conn;
   }
 //   =====================================
+public static function sql_query($query){
+
+    // $q = DB::$conn->prepare($query);
+    // return $q->execute($values);
+    return DB::$conn->query($query);
+}
+
+
+
+// ===========================================
 public static function selectAll($table){
 
-    return DB::$conn->query("SELECT * FROM $table")->fetchAll();
+    return DB::$conn->query("SELECT * FROM $table")->fetchAll(PDO::FETCH_ASSOC);
 
 }
 //   =====================================
-public static function selectone($table,$id){
+public static function selectone($table,$col,$value){
 
-    return DB::$conn->query("SELECT * FROM $table WHERE  id=$id")->fetch();
+    return DB::$conn->query("SELECT * FROM $table WHERE  $col=$value")->fetch(PDO::FETCH_ASSOC);
 
  }
 //   =====================================
@@ -40,9 +50,7 @@ public static function insert($table,$array){
 
     $q = DB::$conn->prepare($sql);
     return $q->execute($values);
-      
 
- }
 //   =====================================
 public static function update_item($table,$array,$id){
 
@@ -67,16 +75,19 @@ public static function delete($table,$key,$value){
 
  }
 //   =====================================
+public static function fjoin($sql,$table1,$table1_Col,$table2,$table2_Col){
 
-
-public static function selectsingle($table,$key , $val){
-
-    return DB::$conn->query("SELECT * FROM $table WHERE $key='$val'")->fetch(PDO::FETCH_ASSOC);
-
- }
-
-
+    $sql="SELECT
+                $sql
+            FROM $table1
+            JOIN $table2
+            ON
+                $table1.$table1_Col =$table2.$table2_Col";
+                
+    return DB::$conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+  
 }
+}//end class
 
 DB::connect(
             env("DB_type"),
