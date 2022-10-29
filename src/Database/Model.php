@@ -1,7 +1,7 @@
 <?php 
 
 namespace MvcPhp\Database;
-
+// use MvcPhp\Database\DB;
 class Model{
 
     protected static  $table;
@@ -13,11 +13,6 @@ class Model{
     public static function find($id){
 
         return \DB::selectone(Model::$table,$id);
-    }
-
-    public static function findone($key ,  $val){
-
-        return \DB::selectsingle(Model::$table,$key , $val);
     }
 
     public static function create($arr_data){

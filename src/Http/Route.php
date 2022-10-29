@@ -6,6 +6,7 @@ use MvcPhp\view\view;
 
     class Route 
     {
+
         public static array $routes = [];
         public Request $request;
         public Response $response;
@@ -14,11 +15,14 @@ use MvcPhp\view\view;
         {
             $this->request = $request;
             $this->response = $response;
+
         }
-    
+      
+  
         public static function get($route , $action)
         {
             self::$routes['get'][$route] = $action ;
+       
         }
 
         public static function post($route , $action)
@@ -37,6 +41,7 @@ use MvcPhp\view\view;
                 view::makeError('404');
             }
             
+
             if(is_callable($action))
             {
                // call_user_func_array($action, []);
@@ -45,9 +50,11 @@ use MvcPhp\view\view;
             
             if(is_array($action))
             {
+               
                 call_user_func_array([new $action[0], $action[1]], []);
              //  $controller = new $action[0];
               
+               
             }
 
         }

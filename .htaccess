@@ -7,7 +7,7 @@ RewriteRule ^public/ - [L]
 RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
 RewriteRule (.+) public/$1 [L]
 
-RewriteRule (.*) public/index.php [L,QSA]
+RewriteRule (.*) public/index.php?route=$1 [L,QSA]
 </IfModule>
 
 
