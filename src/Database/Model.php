@@ -1,11 +1,7 @@
 <?php 
 
 namespace MvcPhp\Database;
-<<<<<<< HEAD
-// use MvcPhp\Database\DB;
-=======
 
->>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
 class Model{
 
     protected static  $table;
@@ -14,20 +10,9 @@ class Model{
         return \DB::selectAll(Model::$table);
     }
 
-<<<<<<< HEAD
     public static function find($col,$value){
 
         return \DB::selectone(Model::$table,$col,$value);
-=======
-    public static function find($id){
-
-        return \DB::selectone(Model::$table,$id);
-    }
-
-    public static function findone($key ,  $val){
-
-        return \DB::selectsingle(Model::$table,$key , $val);
->>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
     }
 
     public static function create($arr_data){
@@ -45,7 +30,6 @@ class Model{
         return \DB::delete(Model::$table,$colName,$id);
     }
 
-<<<<<<< HEAD
     public static function query($query){
        
         return \DB::sql_query($query);
@@ -55,7 +39,4 @@ class Model{
         return \DB::fjoin($table1,$table1_Col,$table2,$table2_Col);
     }
     
-=======
-
->>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
 }
