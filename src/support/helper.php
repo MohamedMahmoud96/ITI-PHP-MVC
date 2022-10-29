@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Models\Login;
 use App\Models\user;
 use Dotenv\Parser\Value;
@@ -8,6 +9,12 @@ use MvcPhp\Application;
 use MvcPhp\Cookies;
 use MvcPhp\Http\Request;
 use MvcPhp\Session;
+
+use  MvcPhp\view\view;
+use MvcPhp\Application;
+use Dotenv\Parser\Value;
+use MvcPhp\validation\Validator;
+
 
 if(!function_exists('env'))
 {
@@ -63,6 +70,7 @@ if(!function_exists('app'))
         return $instance ;
     }
 }
+
 
 if(!function_exists('asset'))
 {
@@ -190,3 +198,11 @@ if(!function_exists('auth'))
 
 
    
+=======
+if (!function_exists('validator')) {
+    function validator()
+    {
+        return (new Validator());
+    }
+}
+
