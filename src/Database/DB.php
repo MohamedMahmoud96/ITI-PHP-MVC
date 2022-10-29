@@ -67,6 +67,15 @@ public static function delete($table,$key,$value){
 
  }
 //   =====================================
+
+
+public static function selectsingle($table,$key , $val){
+
+    return DB::$conn->query("SELECT * FROM $table WHERE $key='$val'")->fetch(PDO::FETCH_ASSOC);
+
+ }
+
+
 }
 
 DB::connect(
