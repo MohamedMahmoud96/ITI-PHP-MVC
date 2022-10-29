@@ -1,7 +1,7 @@
 <?php 
 namespace App\Models;
-use Src\Database\Model;
-// use Model;
+use MvcPhp\Database\Model;
+
 class user extends Model
 {
     public function __construct($table)
@@ -10,4 +10,4 @@ class user extends Model
     }
  
 }
-new user("user");
+new user("users");
