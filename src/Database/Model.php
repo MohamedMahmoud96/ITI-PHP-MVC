@@ -1,4 +1,5 @@
 <?php 
+
 namespace MvcPhp\Database;
 // use MvcPhp\Database\DB;
 class Model{
