@@ -39,7 +39,7 @@ class Request
         $path = rtrim(str_replace($filepath.'/', '', $path), '/');
         $path == '' ? $path = '/' : $path;
 
-        dump($path);
+        // dump($path);
         return str_contains($path, '?' ) ? explode('?', $path)[0] : $path;
 
 

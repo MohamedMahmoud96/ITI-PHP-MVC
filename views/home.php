@@ -12,7 +12,6 @@
     <form action="./register" method='post'>
         <input type=' text' name='name'>
         <button>
-
                 add
         </button>
 

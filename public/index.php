@@ -17,8 +17,3 @@ require_once base_path() . '/routes/web.php';
 app()->run();
 
 
-
-
-// use App\Controllers\HomeController;
-// HomeController::DBtest();
-

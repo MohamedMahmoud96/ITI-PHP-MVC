@@ -1,4 +1,5 @@
 <?php 
+
 namespace MvcPhp\Database;
 // use MvcPhp\Database\DB;
 class Model{
@@ -9,9 +10,9 @@ class Model{
         return \DB::selectAll(Model::$table);
     }
 
-    public static function find($id){
+    public static function find($col,$value){
 
-        return \DB::selectone(Model::$table,$id);
+        return \DB::selectone(Model::$table,$col,$value);
     }
 
     public static function create($arr_data){
@@ -29,5 +30,13 @@ class Model{
         return \DB::delete(Model::$table,$colName,$id);
     }
 
+    public static function query($query){
+       
+        return \DB::sql_query($query);
+    }
 
+    public static function join($table1,$table1_Col,$table2,$table2_Col){
+        return \DB::fjoin($table1,$table1_Col,$table2,$table2_Col);
+    }
+    
 }

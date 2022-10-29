@@ -20,6 +20,17 @@ if (!function_exists('value'))
     }
 }
 
+if (!function_exists('asset'))
+{
+    function asset($url)
+    {
+        return "../../public/$url";
+    }
+}
+
+
+
+
 if (!function_exists('bash_path'))
 {
     function base_path()
