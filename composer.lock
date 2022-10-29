@@ -4,9 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "b77c51adc6353eafc0ee59903d1349f3",
     "packages": [
         {
+=======
+    "content-hash": "1dc919a9146cb1e5d42aa154a3e21248",
+    "packages": [
+        {
+            "name": "almasaeed2010/adminlte",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "bd4d9c72931f1dd28601b6bfb387554a381ad540"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/bd4d9c72931f1dd28601b6bfb387554a381ad540",
+                "reference": "bd4d9c72931f1dd28601b6bfb387554a381ad540",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colorlib"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
+            "homepage": "https://adminlte.io/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "support": {
+                "issues": "https://github.com/ColorlibHQ/AdminLTE/issues",
+                "source": "https://github.com/ColorlibHQ/AdminLTE/tree/v3.2.0"
+            },
+            "time": "2022-02-07T20:33:09+00:00"
+        },
+        {
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
             "name": "graham-campbell/result-type",
             "version": "v1.1.0",
             "source": {
@@ -564,6 +613,7 @@
             "time": "2022-10-16T01:01:54+00:00"
         }
     ],
+<<<<<<< HEAD
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -3005,6 +3055,9 @@
             "time": "2022-03-08T17:03:00+00:00"
         }
     ],
+=======
+    "packages-dev": [],
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],

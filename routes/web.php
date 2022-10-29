@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 use  App\Controllers\admin\HomeController;
 use  App\Controllers\admin\userController;
@@ -39,3 +40,33 @@ Route::get('admin/orders/edite', [orderController::class, 'edite']);
 Route::get('admin/orders/update', [orderController::class, 'update']);
 Route::get('admin/orders/delete', [orderController::class, 'delete']);
 
+=======
+<?php
+use  App\Controllers\HomeController;
+use  App\Controllers\LoginController;
+use App\Controllers\LogoutController;
+use MvcPhp\Http\Route;
+
+
+
+
+
+Route::get('/', [HomeController::class, 'index']);  
+Route::get('/home', [HomeController::class, 'index']);  
+Route::get('/users', function(){
+    return view('admin/users/users');
+});  
+Route::get('/admin', function(){
+    return view('admin/index');
+});  
+Route::get("/add/new/user", function(){
+    return view('register');
+});
+Route::post('/insertuser', [HomeController::class, 'create']);
+
+Route::get('/logout', [LogoutController::class, 'index']);
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login']);
+
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc

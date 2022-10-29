@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
 
 
@@ -19,3 +20,9 @@
 </div>
     </body>
     </html>
+=======
+
+        
+
+    {{content}}
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc

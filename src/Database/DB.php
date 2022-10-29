@@ -17,6 +17,7 @@ class DB{
       return DB::$conn;
   }
 //   =====================================
+<<<<<<< HEAD
 public static function sql_query($query){
 
     // $q = DB::$conn->prepare($query);
@@ -36,6 +37,17 @@ public static function selectAll($table){
 public static function selectone($table,$col,$value){
 
     return DB::$conn->query("SELECT * FROM $table WHERE  $col=$value")->fetch(PDO::FETCH_ASSOC);
+=======
+public static function selectAll($table){
+
+    return DB::$conn->query("SELECT * FROM $table")->fetchAll();
+
+}
+//   =====================================
+public static function selectone($table,$id){
+
+    return DB::$conn->query("SELECT * FROM $table WHERE  id=$id")->fetch();
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
 
  }
 //   =====================================
@@ -50,6 +62,11 @@ public static function insert($table,$array){
 
     $q = DB::$conn->prepare($sql);
     return $q->execute($values);
+<<<<<<< HEAD
+=======
+      
+
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
  }
 //   =====================================
 public static function update_item($table,$array,$id){
@@ -75,6 +92,7 @@ public static function delete($table,$key,$value){
 
  }
 //   =====================================
+<<<<<<< HEAD
 public static function fjoin($sql,$table1,$table1_Col,$table2,$table2_Col){
 
     $sql="SELECT
@@ -88,6 +106,18 @@ public static function fjoin($sql,$table1,$table1_Col,$table2,$table2_Col){
   
 }
 }//end class
+=======
+
+
+public static function selectsingle($table,$key , $val){
+
+    return DB::$conn->query("SELECT * FROM $table WHERE $key='$val'")->fetch(PDO::FETCH_ASSOC);
+
+ }
+
+
+}
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
 
 DB::connect(
             env("DB_type"),
