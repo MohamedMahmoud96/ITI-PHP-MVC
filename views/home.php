@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wave Cafe HTML Template by Tooplate</title>
     <!-- CSS only -->
     <link rel="stylesheet" href="public/assets/css/tooplate-wave-cafe.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -15,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light sticky-top">
+    <nav id='header-nav' class="navbar navbar-expand-lg  navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,29 +47,42 @@
                     </div>
                     <nav class="tm-site-nav">
                         <div class="d-flex flex-column">
-                            <form action="" method="post">
-                                <?php foreach ($cartProducts as $cartProduct) { ?>
-                                    <div class="d-flex flex-row justify-content-evenly my-1 bg-white">
-                                        <div class="">
-                                            <h5><?= $cartProduct['name'] ?></h5>
-                                        </div>
-                                        <div><?= '$' . $cartProduct['price'] ?></div>
-                                        <div><a href="">-</a></div>
-                                        <span id="quantity"><?= $cartProduct['quantity'] ?></span>
-                                        <div>
-                                            <a href="">+</a>
-                                        </div>
-                                        <div><a href="">X</a></div>
-
+                            <?php foreach ($cartProducts as $cartProduct) : ?>
+                                <div class=" row text-light my-2 gx-0 p-0">
+                                    <div class="col col-lg-6 p-0">
+                                        <h3> <?= $cartProduct['name'] ?></h3>
                                     </div>
-                                <?php } ?>
-                                <div>
+                                    <div class="col col-lg-2">
+                                        <h4><?= '$' . $cartProduct['price'] ?></h4>
+                                    </div>
+                                    <div class="col col-lg-1">
+                                        <h3><a href="" class="cart-link">+</a></h3>
+                                    </div>
+                                    <span id="quantity" class="col col-lg-1">
+                                        <h4><?= $cartProduct['quantity'] ?></h4>
+                                    </span>
+                                    <div class="col col-lg-1">
+                                        <h3><a href="" class="cart-link">-</a></h3>
+                                    </div>
+                                    <div class="col col-lg-1">
+                                        <form action="./cart/delete" method="post">
+                                            <input type="text" name="product_id" value="<?= $cartProduct['id'] ?>" hidden>
+                                            <button class=" btn btn-sm btn-danger">X</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            <?php endforeach ?>
+                            <div>
+                                <div class="row gx-0 mx-2 my-2">
                                     <div class="form-group">
                                         <textarea class="form-control" name="" id="" rows="2"> any notes</textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="room">Room</label>
-                                        <select class="form-control" name="room" id="room">
+                                </div>
+                                <div class="form-group row gx-0 g-2 my-2">
+                                    <div class="col col-lg-3 text-light">
+                                        <h4 class="text-center"><label for="room">Room</label></h4>
+                                    </div>
+                                    <div class="col col-lg-3"> <select class="form-control" name="room" id="room">
                                             <option value="<?= $user['room_no'] ?>"><?= $user['room_no'] ?></option>
 
                                             <?php foreach ($rooms as $room) { ?>
@@ -79,18 +91,20 @@
                                                 } ?>
                                                 <option value="<?= $room['room_no'] ?>"><?= $room['room_no'] ?></option>
                                             <?php } ?>
-                                        </select>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <h2> <span>Total Price </span></h2>
-                                        <h2><span>$ Price</span></h2>
-                                    </div>
-                                    <div class="d-flex justify-content-end">
-                                        <form action="./order/create/<?=$user['id']?>" method="post">
-                                            <button class="p-2">Order Now</button>
-                                        </form>
-                                    </div>
+                                        </select></div>
+
                                 </div>
+                                <div class="d-flex justify-content-between text-light p-2 ">
+                                    <h2>Total Price </h2>
+                                    <h2>$ Price</h2>
+                                </div>
+                                <div class="d-flex justify-content-end m-3">
+                                    <form action="./order/create" method="post">
+                                        <input type="text" hidden name="user_id" value="<?= $user['id'] ?>">
+                                        <button class="me-2 form-buttons">Order Now</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         </form>
                     </nav>
@@ -120,8 +134,8 @@
                                                     <p class="tm-list-item-description">Here is a short description for the first item. Wave Cafe Template is provided by Tooplate.</p>
                                                     <div class="d-flex justify-content-end">
                                                         <form action="./cart/addto" method="post">
-                                                            <input type="text" name="product_id" value="<?=$product['id']?>" hidden>
-                                                            <button class="p-2">Add To Cart</button>
+                                                            <input type="text" name="product_id" value="<?= $product['id'] ?>" hidden>
+                                                            <button class="form-buttons">Add To Cart</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -149,6 +163,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="public/assets/js/jquery-3.4.1.min.js"></script>
     <script>
+        // function addToCart(product_id) {
+        //     console.log(product_id);
+        //     let productId = 'addToCart' + product_id;
+        //     console.log('product id',productId);
+        //     let addToCartEle = document.getElementById(productId);
+        //     console.log(addToCartEle);
+        //     return;
+        // }
+    </script>
+    <script>
         function setVideoSize() {
             const vidWidth = 1920;
             const vidHeight = 1080;
@@ -163,65 +187,29 @@
             tmVideo.css('width', newVidWidth);
             tmVideo.css('height', newVidHeight);
         }
+        /************** Video background *********/
+        setVideoSize();
+        // Set video background size based on window size
+        let timeout;
+        window.onresize = function() {
+            clearTimeout(timeout);
+            timeout = setTimeout(setVideoSize, 100);
+        };
 
+        // Play/Pause button for video background      
+        const btn = $("#tm-video-control-button");
 
+        btn.on("click", function(e) {
+            const video = document.getElementById("tm-video");
+            $(this).removeClass();
 
-
-
-        function highlightMenu(menuItem) {
-            $('.tm-page-link').removeClass('active');
-            menuItem.addClass('active');
-        }
-
-
-        $(document).ready(function() {
-            $('.tm-page-link').click(function(event) {
-
-                if (window.innerWidth > 991) {
-                    event.preventDefault();
-                }
-
-                highlightMenu($(event.currentTarget));
-                showPage($(event.currentTarget.hash));
-            });
-
-
-            /***************** Tabs *******************/
-
-            $('.tm-tab-link').on('click', e => {
-                e.preventDefault();
-                openTab(e, $(e.target).data('id'));
-            });
-
-            $('.tm-tab-link.active').click(); // Open default tab
-
-
-            /************** Video background *********/
-
-            setVideoSize();
-
-            // Set video background size based on window size
-            let timeout;
-            window.onresize = function() {
-                clearTimeout(timeout);
-                timeout = setTimeout(setVideoSize, 100);
-            };
-
-            // Play/Pause button for video background      
-            const btn = $("#tm-video-control-button");
-
-            btn.on("click", function(e) {
-                const video = document.getElementById("tm-video");
-                $(this).removeClass();
-
-                if (video.paused) {
-                    video.play();
-                    $(this).addClass("fas fa-pause");
-                } else {
-                    video.pause();
-                    $(this).addClass("fas fa-play");
-                }
-            });
+            if (video.paused) {
+                video.play();
+                $(this).addClass("fas fa-pause");
+            } else {
+                video.pause();
+                $(this).addClass("fas fa-play");
+            }
         });
     </script>
 </body>

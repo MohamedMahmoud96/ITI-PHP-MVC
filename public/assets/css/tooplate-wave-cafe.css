@@ -63,19 +63,23 @@ h2 { margin-top: 0; }
     display: flex;
     justify-content: space-between;
 }
+ #header-nav{
+    background-color: #0102029c!important;
+ 
+}
 
 .tm-left,
 .tm-right {
     width: 50%;
 }
 
-.tm-left-inner { position: fixed; }
+.tm-left-inner { position: fixed; background-color: #0a15150d !important;}
 
 .tm-site-header {
-    background-color: white;
-    color: #099;
+    background-color:#099 ;
+    color: white;
     width: 100%;
-    height: 80px; 
+    height: 60px; 
     display: flex;
     align-items: center;
     justify-content: center;   
@@ -89,8 +93,9 @@ h2 { margin-top: 0; }
 }
 
 .tm-left-inner {
-    max-width: 500px;
+    max-width: 680px;
     width: 100%;
+    background-color: #0a15150d !important;
 }
 
 .tm-site-nav-ul {
@@ -100,7 +105,23 @@ h2 { margin-top: 0; }
 }
 
 .tm-page-nav-item { margin-top: 20px; }
-
+.cart-link{
+    text-decoration: none;
+    color: white;
+}
+.cart-link:hover{
+    background-color: white;
+    color: #099;
+}
+.form-buttons{
+     border-radius: 25px;
+     border: 0;
+     padding: 10px 20px !important;
+     font-size: 20px;
+     font-weight: bold;
+     color:#099;
+     width: 100%;
+}
 .tm-page-link {
     min-width: 240px;
     height: 100px;
@@ -139,7 +160,7 @@ h2 { margin-top: 0; }
     border-bottom: 3px solid transparent;
 }
 
-.tm-drinks-nav { height: 80px; }
+.tm-drinks-nav { height: 60px; }
 .tm-main { max-width: 660px; }
 
 .tm-drinks-nav > ul {
@@ -293,7 +314,7 @@ h2 { margin-top: 0; }
 .tm-mb-30 { margin-bottom: 30px; }
 
 @media (max-width: 1130px) and (min-width: 992px) {
-    .tm-left-inner { max-width: 380px; }
+    .tm-left-inner { max-width: 380px;background-color: #0a15150d !important; }
     .tm-site-name { font-size: 2.6rem; }
     .tm-site-logo { margin-right: 20px; }
     .tm-page-link { width: 100%; }
@@ -303,7 +324,7 @@ h2 { margin-top: 0; }
 }
 
 @media (max-width: 991px) {
-    .tm-left-inner { position: static; }
+    .tm-left-inner { position: static; background-color: #0a15150d !important;}
     .tm-left, .tm-right { width: 100%; }
     .tm-left { margin-bottom: 50px; }
     .tm-row { display: block; }
@@ -359,3 +380,4 @@ h2 { margin-top: 0; }
     .tm-drinks-nav > ul > li { margin-bottom: 10px; }
     .tm-drinks-nav > ul > li > a { display: block; }
 }
+.tm-left-inner{background-color:  rgba(0,0,0,0.6) !important;}
