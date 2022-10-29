@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="<?php echo assets('dist/css/main.css');?>">
+=======
     <!-- CSS only -->
     <link rel="stylesheet" href="public/assets/css/tooplate-wave-cafe.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -14,6 +18,13 @@
 </head>
 
 <body>
+
+    <h1>welcome</h1>
+    <?php dump(auth())?>
+    <form action="<?php route('register')?>" method='post'>
+        <input type=' text' name='name'>
+        <button>
+=======
     <nav id='header-nav' class="navbar navbar-expand-lg  navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -85,6 +96,7 @@
                                     <div class="col col-lg-3"> <select class="form-control" name="room" id="room">
                                             <option value="<?= $user['room_no'] ?>"><?= $user['room_no'] ?></option>
 
+
                                             <?php foreach ($rooms as $room) { ?>
                                                 <?php if ($room['room_no'] == $user['room_no']) {
                                                     continue;
@@ -93,6 +105,10 @@
                                             <?php } ?>
                                         </select></div>
 
+
+            <a href="<?php echo url('add/new/user.png'); ?>">add</a>
+    </form>
+=======
                                 </div>
                                 <div class="d-flex justify-content-between text-light p-2 ">
                                     <h2>Total Price </h2>
@@ -212,6 +228,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>

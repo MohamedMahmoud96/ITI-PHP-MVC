@@ -1,6 +1,12 @@
+
+=======
 <?php
 
 
+        
+
+    {{content}}
+=======
 ?>
 
 <!DOCTYPE html>
@@ -20,3 +26,4 @@
 </body>
 
 </html>
+

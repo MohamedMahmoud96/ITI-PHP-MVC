@@ -2,6 +2,13 @@
 
 namespace App\Controllers;
 
+
+use App\Models\Login;
+use App\Models\Products;
+use App\Models\user;
+use MvcPhp\Database\Model;
+use MvcPhp\Http\Request;
+
 use App\Models\Cart;
 use App\Models\user;
 use App\Models\Product;
@@ -10,10 +17,22 @@ use App\Models\Room;
 use MvcPhp\Database\Model;
 use MvcPhp\validation\Validator;
 
+
 class HomeController
 {
     public static function index()
     {
+
+       
+        return view('home');    
+    }    
+
+    public function create()
+    {
+        $password = password_hash($_REQUEST['password'],PASSWORD_DEFAULT);
+        $user = user::create(['name '=> $_REQUEST['name'], 'email' => $_REQUEST['email'], 'password' => $password]);
+        
+
         //  $user=$_SESSION['user'];
         $products = Product::get();   
         $categories = Category::get();
@@ -39,5 +58,6 @@ class HomeController
 
     public function create()
     {
+
     }
 }

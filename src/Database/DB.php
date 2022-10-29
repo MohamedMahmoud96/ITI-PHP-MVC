@@ -62,6 +62,19 @@ class DB
     public static function delete($table, $key, $value)
     {
 
+
+ }
+//   =====================================
+
+
+public static function selectsingle($table,$key , $val){
+
+    return DB::$conn->query("SELECT * FROM $table WHERE $key='$val'")->fetch(PDO::FETCH_ASSOC);
+
+ }
+
+
+=======
         $sql = "DELETE  FROM $table  WHERE $key=$value";
         $q = DB::$conn->prepare($sql);
         return $q->execute();
@@ -71,6 +84,7 @@ class DB
     {
         return DB::$conn->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
+
 }
 
 DB::connect(
