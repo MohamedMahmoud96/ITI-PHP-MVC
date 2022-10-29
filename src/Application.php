@@ -23,7 +23,7 @@ class Application
 
   public function run()
   {
-    
+    session()->start();
     return $this->route->requestHandell();
   }
 
