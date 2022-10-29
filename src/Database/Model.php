@@ -15,6 +15,11 @@ class Model{
         return \DB::selectone(Model::$table,$id);
     }
 
+    public static function findone($key ,  $val){
+
+        return \DB::selectsingle(Model::$table,$key , $val);
+    }
+
     public static function create($arr_data){
        
         return \DB::insert(Model::$table,$arr_data);
