@@ -35,8 +35,8 @@ class Model{
         return \DB::sql_query($query);
     }
 
-    public static function join($table1,$table1_Col,$table2,$table2_Col){
-        return \DB::fjoin($table1,$table1_Col,$table2,$table2_Col);
+    public static function join($sql,$table1,$table1_Col,$table2,$table2_Col){
+        return \DB::fjoin($sql,$table1,$table1_Col,$table2,$table2_Col);
     }
     
 }
