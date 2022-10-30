@@ -10,15 +10,18 @@ use App\Models\Product;
 class OrderController
 {
     public function index()
-    {   $user_id=auth()['id'];
-        $orders = Order::findAll('user_id',$user_id);
+    {
+        // $user_id=auth()['id'];
+        $user_id ='1';
+        $orders = Order::findAll('user_id', $user_id);
         $products = Order::query("SELECT order_product.* , image, name FROM products ,order_product WHERE order_product.order_id IN ( 
                                 SELECT orders.id FROM orders WHERE orders.user_id=$user_id) and products.id = order_product.product_id;");
         return view('order', ["orders" => $orders, "products" => $products]);
     }
     public function filterOrderByDate()
     {
-        $user_id = auth()['id'];
+        // $user_id = auth()['id'];
+        $user_id = '1';
         $from = $_REQUEST['date-from'];
         $to = $_REQUEST['date-to'];
         $filterOrders = Order::query("SELECT * FROM orders WHERE `created_at` between '$from 00:00:00' and '$to 23:59:59' and user_id=$user_id;");

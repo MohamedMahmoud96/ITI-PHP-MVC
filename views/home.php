@@ -31,13 +31,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./order/get">MyOrders</a>
                     </li>
-                </ul>
-                <li class="nav-item">
-                    <a class="nav-link" href=""><?= auth()['name'] ?></a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="">
+                            <?php echo  $user['name']; ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php route('logout') ?>" class="btn btn-danger">logout</a>
+                    </li>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+
+                </ul>
+
+
+                <form class="d-flex" role="search" action="./search" method="post">
+                    <input class="form-control me-2" type="search" name="search" value="" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -171,6 +179,7 @@
                                                     <?php if (!(in_array($product['id'], $cartProductsIds))) { ?>
                                                         <form action="./cart/addto" method="post">
                                                             <input type="text" name="product_id" value="<?= $product['id'] ?>" hidden>
+                                                            <input type="text" name="user_id" value="<?= $user['id'] ?>" hidden>
                                                             <button class="form-buttons">Add To Cart</button>
                                                         </form>
                                                     <?php } else { ?>

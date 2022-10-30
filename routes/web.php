@@ -44,3 +44,4 @@ Route::post("/order/create", [OrderController::class, 'makeOrder']);
 Route::get("/order/get", [OrderController::class, 'index']);
 Route::post("/order/filter", [OrderController::class, 'filterOrderByDate']);
 Route::post("/order/delete", [OrderController::class, 'cancelOrder']);
+Route::post('/search', [HomeController::class, 'search']);
