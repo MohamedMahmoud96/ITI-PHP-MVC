@@ -75,10 +75,10 @@ public static function delete($table,$key,$value){
 
  }
 //   =====================================
-public static function fjoin($sql,$table1,$table1_Col,$table2,$table2_Col){
+public static function fjoin($sqll,$table1,$table1_Col,$table2,$table2_Col){
 
     $sql="SELECT
-                $sql
+                $sqll
             FROM $table1
             JOIN $table2
             ON

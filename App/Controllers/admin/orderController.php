@@ -49,7 +49,7 @@ public function done(){
 
     $id=$_POST["id"];
     // dump($id);
-    $date=date('Y/m/d h:i:s',time());;
+    $date=date('Y/m/d h:i:s',time());
     // dump($date);
     $value=["status"=>"done","deliverd_at"=>$date];
     orders::update($value,$id);
@@ -66,19 +66,22 @@ public function delete(){
 // =========================================================
 public function user_order(){
     // users.email,
+    $id=$_POST["userId"];
     $sql="SELECT
-                orders.id as ordr_id,
-                order_product.*,
-                products.*,
-                products.price as pro_price,
+             *,
+             orders.id as ordrId,
+             order_product.id as orPrId,
+             products.id as proId,
+             users.email
             FROM orders
-            JOIN order_product
-            ON orders.id = order_product.order_id 
-            JOIN products
-            ON order_product.product_id = products.id
-                    ";
-    $user_orders=products::query($sql)->fetchAll(PDO::FETCH_ASSOC);
-     dump($user_orders);
+            JOIN order_product ON orders.id = order_product.order_id
+            JOIN products ON order_product.product_id = products.id
+            join users ON users.id = $id
+            where orders.user_id = $id";
+
+    $user_orders=orders::query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    // dump($user_orders);
+    return view("../Dashboard/orders/userorder",["user_orders"=>$user_orders]);
 }
 //  ==============================================================
 

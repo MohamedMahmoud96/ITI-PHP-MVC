@@ -26,7 +26,7 @@ require_once "../views/Dashboard/header.php";
         <td><img src="../public/assets/images/<?php echo $product["picture"]?>" alt="product image"></td>
         <td><?php echo  $product["cName"]?></td>
         <td>
-          <form action="./products/edite" method="post">
+          <form action="./edite" method="post">
              <input type="text" name="productId"hidden value="<?php echo $product["id"]?>">
              <input type="submit" class="btn btn-primary" value="Edite">
           </form>

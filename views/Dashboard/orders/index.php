@@ -31,8 +31,6 @@ require_once "../views/Dashboard/header.php";
       <th scope="col"></th>
       <th scope="col">Options</th>
       <th scope="col"></th>
-
-
     </tr>
   </thead>
   <tbody>
@@ -99,6 +97,11 @@ require_once "../views/Dashboard/header.php";
     ?>
   </tbody>
 </table>
+
+
+
+
+
 <?php
 require_once "../views/Dashboard/footer.php";
 ?>

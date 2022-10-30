@@ -1,8 +1,11 @@
 <?php
-
 namespace App\Controllers\admin;
 use App\Models\admin\Categories;
-class categoriesController
+use App\Models\admin\Pages;
+use App\Controllers\controller;
+use App\Models\admin\Products;
+
+class categoriesController extends controller
 {
 
    public function index()

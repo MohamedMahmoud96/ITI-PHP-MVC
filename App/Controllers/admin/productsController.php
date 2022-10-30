@@ -63,40 +63,30 @@ class productsController
     public function update()
     {
 
-        
         if (isset($_POST)) {
-            $name = $_POST['name'];
-            $pro_id=$_POST["productId"];
-            $price = $_POST['price'];
-            $category = $_POST['categorieId'];
-            $img=products::find("id",$pro_id);
-           
-            $oldimage=$img["picture"];
-            $image='';
+          $id=$_POST["productId"];
+            $name=$_POST["name"];
+            $price=$_POST["price"];
+            $category=$_POST["categorieId"];
+          $name = $_POST['name'];
+          $price = $_POST['price'];
+          $category = $_POST['categorieId'];
 
-            if($_FILES["image"]!=''){
-                $file = $_FILES['image'];
-                $file_type = $_FILES['image']['type'];
-                $arr = explode('/', $file_type);
-                $ext = end($arr);
-                $image = time() . ".$ext";
-                move_uploaded_file($file['tmp_name'], "../public/assets/images/" . $image);
-            }
-
-             if($image==''){
-                $image=$oldimage;
-             }
-            
-            
+          $file = $_FILES['image'];
+          $file_type = $_FILES['image']['type'];
+          $arr = explode('/', $file_type);
+          $ext = end($arr);
+          $image = time() . ".$ext";
+          move_uploaded_file($file['tmp_name'],"../public/assets/images/".$image);
             $data = [
-                "name" => $name,
-                "price" =>  $price,
-                "picture" => $image,
-                "category_id" => $category,
+              "name" => $name,
+              "price" =>  $price,
+              "picture" => $image,
+              "category_id" => $category,
             ];
-              Products::update($data,$pro_id);
-              dump("sucss");
-            //    return view("../Dashboard/prod", ["success" => "Product Added Successfully"]);
+              Products::update($data,$id);
+              // dump("sucss");
+               return header("location:".$_SERVER["HTTP_REFERER"]);
             }
         
     }
@@ -105,5 +95,6 @@ class productsController
     {
         $id = $_POST["pro_id"];
          products::destory("id",$id);
+         return header("location:".$_SERVER["HTTP_REFERER"]);
     }
 }

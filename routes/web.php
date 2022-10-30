@@ -4,13 +4,15 @@ use  App\Controllers\admin\userController;
 use  App\Controllers\admin\productsController;
 use  App\Controllers\admin\orderController;
 use  App\Controllers\admin\categoriesController;
-
+use  App\Controllers\Controller;
 
 
 use MvcPhp\Http\Route;
 
-
 Route::get('home', [HomeController::class, 'index']);  
+
+Route::post('admin/search', [Controller::class, 'search']);  
+
 
 Route::get('dbb', [HomeController::class, 'DBtest']);
 
@@ -21,7 +23,7 @@ Route::get('admin', [HomeController::class, 'dash']);
 // ============== user routes =========================
 Route::get('admin/users', [userController::class, 'index']);
 Route::get('admin/users/add', [userController::class, 'add']);
-Route::post('admin/users/store', [userController::class,'get_add']);
+Route::post('admin/users/store', [userController::class,'store']);
 Route::post('admin/users/delete', [userController::class,'delete']);
 
 // ============== categories routes =========================

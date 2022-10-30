@@ -35,8 +35,8 @@ require_once "../views/Dashboard/header.php";
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <img src="./public/assets/images/1666995032.jpeg" style="width:200px;height:200px;" alt="product image">
-                      <input type="file" name="image"  id="form3Example4c" class="form-control" />
+                        <img src="../../public/assets/images/1666995032.jpeg" style="width:200px;height:200px;" alt="product image">
+                      <input type="file" id="form3Example4c" class="form-control" />
                       <label class="form-label" for="form3Example4c">image</label>
                     </div>
                   </div>
