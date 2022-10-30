@@ -24,6 +24,8 @@ class Application
 
   public function run()
   {
+
+  
     session()->start();
     Authenticate::redirectTo($this->request);
     return $this->route->requestHandell();

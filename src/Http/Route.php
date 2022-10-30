@@ -6,6 +6,10 @@ use MvcPhp\view\view;
 
     class Route 
     {
+<<<<<<< HEAD
+
+=======
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
         public static array $routes = [];
         public Request $request;
         public Response $response;
@@ -14,11 +18,22 @@ use MvcPhp\view\view;
         {
             $this->request = $request;
             $this->response = $response;
+<<<<<<< HEAD
+
+        }
+      
+  
+        public static function get($route , $action)
+        {
+            self::$routes['get'][$route] = $action ;
+       
+=======
         }
     
         public static function get($route , $action)
         {
             self::$routes['get'][$route] = $action ;
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
         }
 
         public static function post($route , $action)
@@ -37,6 +52,10 @@ use MvcPhp\view\view;
                 view::makeError('404');
             }
             
+<<<<<<< HEAD
+
+=======
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
             if(is_callable($action))
             {
                // call_user_func_array($action, []);
@@ -45,9 +64,17 @@ use MvcPhp\view\view;
             
             if(is_array($action))
             {
+<<<<<<< HEAD
+               
                 call_user_func_array([new $action[0], $action[1]], []);
              //  $controller = new $action[0];
               
+               
+=======
+                call_user_func_array([new $action[0], $action[1]], []);
+             //  $controller = new $action[0];
+              
+>>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
             }
 
         }
