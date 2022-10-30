@@ -1,12 +1,12 @@
 
-=======
+
 <?php
 
 
         
 
-    {{content}}
-=======
+    
+
 ?>
 
 <!DOCTYPE html>

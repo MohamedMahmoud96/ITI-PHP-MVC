@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Document</title>
-    <link rel="stylesheet" href="<?php echo assets('dist/css/main.css');?>">
-=======
     <!-- CSS only -->
     <link rel="stylesheet" href="public/assets/css/tooplate-wave-cafe.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -19,15 +17,9 @@
 
 <body>
 
-    <h1>welcome</h1>
-    <?php dump(auth())?>
-    <form action="<?php route('register')?>" method='post'>
-        <input type=' text' name='name'>
-        <button>
-=======
     <nav id='header-nav' class="navbar navbar-expand-lg  navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Wave CAFE</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,9 +29,13 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="./order/get">MyOrders</a>
                     </li>
                 </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href=""><?= auth()['name'] ?></a>
+                </li>
+
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -47,7 +43,7 @@
             </div>
         </div>
     </nav>
-    <div class="tm-container">
+    <div class="tm-container  d-flex justify-content-between">
         <div class="tm-row">
             <!-- cart -->
             <div class="tm-left">
@@ -58,115 +54,148 @@
                     </div>
                     <nav class="tm-site-nav">
                         <div class="d-flex flex-column">
+                            <?php $totalPrice = 0 ?>
+
                             <?php foreach ($cartProducts as $cartProduct) : ?>
+                                <?php $totalPrice += $cartProduct['price'] * $cartProduct['quantity']; ?>
                                 <div class=" row text-light my-2 gx-0 p-0">
-                                    <div class="col col-lg-6 p-0">
+                                    <div class="col col-lg-6 p-2">
                                         <h3> <?= $cartProduct['name'] ?></h3>
                                     </div>
-                                    <div class="col col-lg-2">
+                                    <div class="col col-lg-2 p-2">
                                         <h4><?= '$' . $cartProduct['price'] ?></h4>
                                     </div>
                                     <div class="col col-lg-1">
-                                        <h3><a href="" class="cart-link">+</a></h3>
+                                        <form action="./cart/minusquantity" method="post">
+                                            <input type="text" name="product_id" value="<?= $cartProduct['id'] ?>" hidden>
+                                            <input type="text" name="user_id" value="<?= $user['id'] ?>" hidden>
+                                            <button type="submit" class=" btn btn-sm btn-dark ">
+                                                <h3> - </h3>
+                                            </button>
+                                        </form>
+
                                     </div>
                                     <span id="quantity" class="col col-lg-1">
                                         <h4><?= $cartProduct['quantity'] ?></h4>
                                     </span>
                                     <div class="col col-lg-1">
-                                        <h3><a href="" class="cart-link">-</a></h3>
+                                        <form action="./cart/addquantity" method="post">
+                                            <input type="text" name="product_id" value="<?= $cartProduct['id'] ?>" hidden>
+                                            <input type="text" name="user_id" value="<?= $user['id'] ?>" hidden>
+                                            <button type="submit" class=" btn btn-sm btn-dark">
+                                                <h3> + </h3>
+                                            </button>
+                                        </form>
+
                                     </div>
                                     <div class="col col-lg-1">
                                         <form action="./cart/delete" method="post">
                                             <input type="text" name="product_id" value="<?= $cartProduct['id'] ?>" hidden>
-                                            <button class=" btn btn-sm btn-danger">X</button>
+                                            <button class=" btn  btn-danger">X</button>
                                         </form>
                                     </div>
                                 </div>
                             <?php endforeach ?>
-                            <div>
-                                <div class="row gx-0 mx-2 my-2">
-                                    <div class="form-group">
-                                        <textarea class="form-control" name="" id="" rows="2"> any notes</textarea>
+                            <?php if (count($cartProducts) > 0) { ?>
+                                <form action="./order/create" method="post">
+                                    <div>
+                                        <div class="row gx-0 mx-2 my-2">
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="comment" value="" rows="2"> any notes</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row gx-0 g-2 my-2 p-2">
+                                            <div class="col col-lg-3 text-light">
+                                                <h2><label for="room">Room</label></h2>
+                                            </div>
+                                            <div class="col col-lg-3"> <select class="form-control" name="room" id="room">
+                                                    <option value="<?= $user['room_no'] ?>"><?= $user['room_no'] ?></option>
+                                                    <?php foreach ($rooms as $room) { ?>
+                                                        <?php if ($room['room_no'] == $user['room_no']) {
+                                                            continue;
+                                                        } ?>
+                                                        <option value="<?= $room['room_no'] ?>"><?= $room['room_no'] ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex  text-light p-2 ">
+                                            <h2 class="me-4">Total Price </h2>
+                                            <h2 id="total-price">$ <?= $totalPrice ?> </h2>
+                                        </div>
+                                        <div class="d-flex justify-content-end m-3 p-2">
+                                            <input type="text" name="total_price" value="<?= $totalPrice ?>" hidden>
+                                            <input type="text" hidden name="user_id" value="<?= $user['id'] ?>">
+
+                                            <button class="me-2 form-buttons">Order Now</button>
+
+                                        </div>
                                     </div>
+                                </form>
+                            <?php } else { ?>
+                                <div class="col col-lg-12">
+                                    <span>
+                                        <h3 class="text-danger text-center">Empty Cart</h3>
+                                    </span>
                                 </div>
-                                <div class="form-group row gx-0 g-2 my-2">
-                                    <div class="col col-lg-3 text-light">
-                                        <h4 class="text-center"><label for="room">Room</label></h4>
-                                    </div>
-                                    <div class="col col-lg-3"> <select class="form-control" name="room" id="room">
-                                            <option value="<?= $user['room_no'] ?>"><?= $user['room_no'] ?></option>
+                            <?php } ?>
 
-
-                                            <?php foreach ($rooms as $room) { ?>
-                                                <?php if ($room['room_no'] == $user['room_no']) {
-                                                    continue;
-                                                } ?>
-                                                <option value="<?= $room['room_no'] ?>"><?= $room['room_no'] ?></option>
-                                            <?php } ?>
-                                        </select></div>
-
-
-            <a href="<?php echo url('add/new/user.png'); ?>">add</a>
-    </form>
-=======
-                                </div>
-                                <div class="d-flex justify-content-between text-light p-2 ">
-                                    <h2>Total Price </h2>
-                                    <h2>$ Price</h2>
-                                </div>
-                                <div class="d-flex justify-content-end m-3">
-                                    <form action="./order/create" method="post">
-                                        <input type="text" hidden name="user_id" value="<?= $user['id'] ?>">
-                                        <button class="me-2 form-buttons">Order Now</button>
-                                    </form>
-                                </div>
-                            </div>
                         </div>
-                        </form>
-                    </nav>
                 </div>
+                </nav>
             </div>
-            <!-- products -->
-            <div class="tm-right">
-                <main class="tm-main">
-                    <div id="drink" class="tm-page-content">
-                        <!-- Drink Menu Page -->
-                        <?php foreach ($categories as $category) { ?>
-                            <nav class="tm-black-bg tm-drinks-nav mt-1">
-                                <ul>
-                                    <li>
-                                        <h2> <?= $category['name'] ?></h2>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <?php foreach ($products as $product) { ?>
-                                <?php if ($category['id'] == $product['category_id']) { ?>
-                                    <div class="tm-tab-content">
-                                        <div class="tm-list">
-                                            <div class="tm-list-item">
-                                                <img src="public/assets/img/<?= $product['image'] ?>" alt="Image" class="tm-list-item-img">
-                                                <div class="tm-black-bg tm-list-item-text">
-                                                    <h3 class="tm-list-item-name"><?= $product['name'] ?><span class="tm-list-item-price">$<?= $product['price'] ?></span></h3>
-                                                    <p class="tm-list-item-description">Here is a short description for the first item. Wave Cafe Template is provided by Tooplate.</p>
-                                                    <div class="d-flex justify-content-end">
+        </div>
+        <!-- products -->
+        <div class="tm-right">
+            <main class="tm-main">
+                <div id="drink" class="tm-page-content">
+                    <!-- Drink Menu Page -->
+                    <?php foreach ($categories as $category) { ?>
+                        <nav class="tm-black-bg tm-drinks-nav mt-1">
+                            <ul>
+                                <li>
+                                    <h2> <?= $category['name'] ?></h2>
+                                </li>
+                            </ul>
+                        </nav>
+                        <?php foreach ($products as $product) { ?>
+                            <?php if ($category['id'] == $product['category_id']) { ?>
+                                <div class="tm-tab-content">
+                                    <div class="tm-list">
+                                        <div class="tm-list-item">
+                                            <img src="public/assets/img/<?= $product['image'] ?>" alt="Image" class="tm-list-item-img">
+                                            <div class="tm-black-bg tm-list-item-text">
+                                                <h3 class="tm-list-item-name"><?= $product['name'] ?><span class="tm-list-item-price">$<?= $product['price'] ?></span></h3>
+                                                <p class="tm-list-item-description">Here is a short description for the first item. Wave Cafe Template is provided by Tooplate.</p>
+                                                <div class="d-flex justify-content-end">
+                                                    <?php if (!(in_array($product['id'], $cartProductsIds))) { ?>
                                                         <form action="./cart/addto" method="post">
                                                             <input type="text" name="product_id" value="<?= $product['id'] ?>" hidden>
                                                             <button class="form-buttons">Add To Cart</button>
                                                         </form>
-                                                    </div>
+                                                    <?php } else { ?>
+                                                        <form action="./cart/addquantity" method="post">
+                                                            <input type="text" name="product_id" value="<?= $product['id'] ?>" hidden>
+                                                            <input type="text" name="user_id" value="<?= $user['id'] ?>" hidden>
+                                                            <button class="form-buttons" style="background-color: #0cc; color:white">Add More</button>
+                                                        </form>
+                                                    <?php } ?>
+
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                <?php } ?>
+                                </div>
                             <?php } ?>
                         <?php } ?>
-                        <!-- end Drink Menu Page -->
-                    </div>
-                </main>
-            </div>
+                    <?php } ?>
+                    <!-- end Drink Menu Page -->
+                </div>
+            </main>
         </div>
     </div>
+
 
     <!-- Background video -->
     <div class="tm-video-wrapper">
@@ -179,14 +208,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="public/assets/js/jquery-3.4.1.min.js"></script>
     <script>
-        // function addToCart(product_id) {
-        //     console.log(product_id);
-        //     let productId = 'addToCart' + product_id;
-        //     console.log('product id',productId);
-        //     let addToCartEle = document.getElementById(productId);
-        //     console.log(addToCartEle);
-        //     return;
-        // }
+
+
     </script>
     <script>
         function setVideoSize() {

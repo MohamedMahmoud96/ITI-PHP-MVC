@@ -3,9 +3,6 @@
 
 use App\Models\Login;
 use App\Models\user;
-use Dotenv\Parser\Value;
-use  MvcPhp\view\view;
-use MvcPhp\Application;
 use MvcPhp\Cookies;
 use MvcPhp\Http\Request;
 use MvcPhp\Session;
@@ -195,10 +192,6 @@ if(!function_exists('auth'))
 }
 
 
-
-
-   
-=======
 if (!function_exists('validator')) {
     function validator()
     {
