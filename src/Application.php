@@ -2,6 +2,7 @@
 
 namespace MvcPhp;
 
+use App\Middelware\Authenticate;
 use MvcPhp\Http\Request;
 use MvcPhp\Http\Response;
 use MvcPhp\Http\Route;
@@ -23,11 +24,10 @@ class Application
 
   public function run()
   {
-<<<<<<< HEAD
-    
-=======
+
+  
     session()->start();
->>>>>>> af5c7fe21541bfe995231b3b6bed0f06bfaf1dcc
+    Authenticate::redirectTo($this->request);
     return $this->route->requestHandell();
   }
 

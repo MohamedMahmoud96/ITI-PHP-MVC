@@ -14,7 +14,7 @@ class LoginController
     {
         if($this->isLogged())
         {
-            return redirectTo('');
+            return redirectTo('home');
         }
         return view('login', ['errors' => $this->errors]);
     }
@@ -32,7 +32,7 @@ class LoginController
             
         }
 
-            return redirectTo(' ');
+            return redirectTo('home');
        }else {
            return $this->index();
        }
@@ -91,7 +91,6 @@ class LoginController
             $token = '';
         }
         $user =  user::findone('remember_token' , $token);
-       
         $this->user = $user;
         if(!$user) return false;
         return true;
