@@ -19,6 +19,11 @@ class Model{
 
         return \DB::selectsingle(Model::$table,$key , $val);
     }
+    public static function findAll($key,  $val)
+    {
+
+        return \DB::selectAllBaseBydKey(Model::$table, $key, $val);
+    }
 
     public static function create($arr_data){
        
