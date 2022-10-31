@@ -2,7 +2,7 @@
 namespace App\Models;
 use MvcPhp\Database\Model;
 
-class Product extends Model
+class Products extends Model
 {
     public function __construct($table)
     {
@@ -10,4 +10,4 @@ class Product extends Model
     }
  
 }
-new Product("products");
+new Products("products");

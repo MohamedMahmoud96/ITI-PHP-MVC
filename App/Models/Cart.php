@@ -1,13 +1,14 @@
 <?php
+
 namespace App\Models;
 
 use MvcPhp\Database\Model;
 
-class Cart extends Model {
-
+class Order extends Model
+{
     public function __construct($table)
     {
         Model::$table = $table;
     }
 }
-new Cart("carts");
+new Order('carts');

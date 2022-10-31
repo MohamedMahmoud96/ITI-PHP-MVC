@@ -2,7 +2,7 @@
 namespace App\Models;
 use MvcPhp\Database\Model;
 
-class User extends Model
+class user extends Model
 {
     public function __construct($table)
     {
@@ -10,4 +10,4 @@ class User extends Model
     }
  
 }
-new User("users");
+new user("users");
