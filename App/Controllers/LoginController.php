@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Login;
-use App\Models\user;
+use App\Models\User;
 use MvcPhp\Cookie;
 
 class LoginController
@@ -23,10 +23,10 @@ class LoginController
     {
         if ($this->isVaild()) {
             if (request()->get('remember')) {
-                cookie()->set('login', $this->user['remember_token']);
+                cookie()->set('login', $this->User['remember_token']);
             } else {
 
-                session()->set('login', $this->user['remember_token']);
+                session()->set('login', $this->User['remember_token']);
             }
 
             return redirectTo(' ');
@@ -60,7 +60,7 @@ class LoginController
 
     public function isVaildLogin($email, $password)
     {
-        $user = user::findone('email', $email);
+        $user = User::findone('email', $email);
         if (!$user) {
             return false;
         }
@@ -79,7 +79,7 @@ class LoginController
         } else {
             $token = '';
         }
-        $user =  user::findone('remember_token', $token);
+        $user =  User::findone('remember_token', $token);
 
         $this->user = $user;
         if (!$user) return false;

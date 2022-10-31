@@ -2,6 +2,7 @@
 
 class DB
 {
+
     static private $conn;
     private function __construct($database_type, $host, $database_name, $username, $password)
     {
@@ -20,13 +21,13 @@ class DB
     public static function selectAll($table)
     {
 
-        return DB::$conn->query("SELECT * FROM $table")->fetchAll();
+        return DB::$conn->query("SELECT * FROM $table")->fetchAll(PDO::FETCH_ASSOC);
     }
     //   =====================================
     public static function selectone($table, $id)
     {
 
-        return DB::$conn->query("SELECT * FROM $table WHERE  id=$id")->fetch();
+        return DB::$conn->query("SELECT * FROM $table WHERE  id=$id")->fetch(PDO::FETCH_ASSOC);
     }
     //   =====================================
     public static function insert($table, $array)

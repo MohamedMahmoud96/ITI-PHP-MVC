@@ -1,13 +1,14 @@
-<?php 
+<?php
+
 namespace App\Models;
+
 use MvcPhp\Database\Model;
 
-class Product extends Model
+class Room extends Model
 {
     public function __construct($table)
     {
-     Model::$table=$table;
+        Model::$table = $table;
     }
- 
 }
-new Product("products");
+new Room('rooms');
