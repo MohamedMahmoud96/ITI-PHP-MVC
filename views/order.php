@@ -14,8 +14,8 @@
             color: #fff;
         }
 
-        .product-cart{
-            background-color:rgba(0,0,0,0.7);
+        .product-cart {
+            background-color: rgba(0, 0, 0, 0.7);
             color: #fff;
         }
     </style>

@@ -2,18 +2,12 @@
 
 namespace App\Controllers;
 
-
-use App\Models\Cart;
 use App\Models\Room;
 use App\Models\User;
-use App\Models\Login;
-
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Products;
-use MvcPhp\Http\Request;
-use MvcPhp\Database\Model;
-use MvcPhp\validation\Validator;
+
+
 
 
 class HomeController
@@ -21,7 +15,7 @@ class HomeController
 
 
     public function index()
-    {
+    {    
         $products = Product::get();
         $categories = Category::get();
         $rooms = Room::get();
